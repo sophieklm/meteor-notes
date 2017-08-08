@@ -22,7 +22,7 @@ if(Meteor.isServer) {
       expect(Notes.findOne({ _id, userId })).toExist();
     });
 
-    it('should note insert a new note when user not logged in', function() {
+    it('should not insert a new note when user not logged in', function() {
       expect(() => {
         Meteor.server.method_handlers['notes.insert']();
       }).toThrow();
@@ -31,6 +31,18 @@ if(Meteor.isServer) {
     it('should remove a note', function() {
       Meteor.server.method_handlers['notes.remove'].apply({ userId: 'testUserId1' }, ['testNoteId1']);
       expect(Notes.findOne({ _id: 'testNoteId1' })).toNotExist();
+    });
+
+    it('should not remove a note when user not logged in', function() {
+      expect(() => {
+        Meteor.server.method_handlers['notes.remove'].apply({}, ['testNoteId1']);
+      }).toThrow();
+    });
+
+    it('should not remove a note if note id is invalid', function() {
+      expect(() => {
+        Meteor.server.method_handlers['notes.remove'].apply({ userId: 'testUserId1' });
+      }).toThrow();
     });
 
   });
