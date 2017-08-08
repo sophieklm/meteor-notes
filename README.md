@@ -12,3 +12,8 @@ $ meteor run
 $ open http://localhost:3000/
 
 ```
+
+## Testing
+```
+$ npm test
+```
