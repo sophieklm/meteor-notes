@@ -16,6 +16,17 @@ if(Meteor.isServer) {
       const res = validateNewUser(testUser);
       expect(res).toBe(true);
     });
-
+    it('should reject invalid email', function() {
+      const testUser = {
+        emails: [
+          {
+            address: 'test'
+          }
+        ]
+      };
+      expect(() => {
+        validateNewUser(testUser);
+      }).toThrow();
+    });
   });
 }
