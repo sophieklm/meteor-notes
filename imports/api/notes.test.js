@@ -69,5 +69,28 @@ if(Meteor.isServer) {
       }).toThrow();
     });
 
+    it('should not update the note if user was not the creator', function() {
+      const title = 'This is a new title';
+      Meteor.server.method_handlers['notes.update'].apply({
+        userId: 'randomuser'
+      }, [noteOne._id, { title }]);
+
+      const note = Notes.findOne(noteOne._id);
+
+      expect(note).toInclude(noteOne);
+    });
+
+    it('should not update a note when user not logged in', function() {
+      expect(() => {
+        Meteor.server.method_handlers['notes.update'].apply({}, [noteOne._id]);
+      }).toThrow();
+    });
+
+    it('should not update a note if note id is invalid', function() {
+      expect(() => {
+        Meteor.server.method_handlers['notes.update'].apply({ userId: noteOne.userId });
+      }).toThrow();
+    });
+
   });
 }
