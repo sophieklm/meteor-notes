@@ -1,12 +1,13 @@
-# Boilerplate Meteor Project
+# Notes App
 
-This includes a basic react and auth setup
+A note taking application using Meteor and React
+Tested using Mocha and Enzyme
 
 ## How to Use
 
 ```
-$ git clone https://github.com/sophieklm/meteor-boilerplate.git
-$ cd meteor-boilerplate
+$ git clone https://github.com/sophieklm/meteor-notes.git
+$ cd meteor-notes
 $ meteor npm install
 $ meteor run
 $ open http://localhost:3000/
