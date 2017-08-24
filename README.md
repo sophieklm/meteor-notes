@@ -1,6 +1,7 @@
 # Notes App
 
 A note taking application using Meteor and React
+
 Tested using Mocha and Enzyme
 
 ## How to Use
