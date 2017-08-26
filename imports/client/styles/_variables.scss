@@ -7,9 +7,11 @@ $dark-grey: #777777;
 //body
 $body-background-color: #fafafa;
 $body-default-color: #333333;
+$body-deault-font-family: Helvetica, Arial, sans-serif;
 
 //Spacing
 $space: 1.4rem;
+$large-space: 2rem;
 $site-max-width: 100rem;
 
 //Font sizes
@@ -45,5 +47,5 @@ $item-text-color: $dark-grey;
 
 //Page Content
 $page-content-sidebar-width: 30rem;
-$page-content-main-width: calc(#{$site-max-width}-#{$page-content-sidebar-width});
+$page-content-main-width: calc(#{$site-max-width} - #{$page-content-sidebar-width});
 $page-content-height: calc(100vh - #{$header-height});
